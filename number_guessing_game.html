@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        text-align: center;
+        margin: 50px;
+      }
+    </style>
+    <title>Number_Gueessing_Game</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Enter a guess between 10 and 30</h1>
+      <input type="text" id="guessInput" placeholder="Enter a number" />
+      <button id="guessButton">Guess</button>
+      <p id="guessResult"></p>
+      <p id="attempts"></p>
+    </div>
+
+    <script>
+      const max = 30;
+      const min = 10;
+      let guessInput = document.getElementById("guessInput");
+      let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      let guessResult = document.getElementById("guessResult");
+      let guessingButton = document.getElementById("guessButton");
+      let attempts = document.getElementById("attempts");
+      let attempt = 0;
+      guessingButton.onclick = () => {
+        let guess = parseInt(guessInput.value);
+
+        if (isNaN(guess)) return;
+
+        if (guess > max || guess < min) {
+          guessResult.textContent = "Please enter a number between 10 and 30";
+        } else {
+          attempt += 1;
+          if (guess === randomNumber) {
+            guessResult.textContent = "You guessed the result";
+          } else if (guess < randomNumber) {
+            guessResult.textContent = "Too low";
+          } else {
+            guessResult.textContent = "Too high";
+          }
+          
+        }
+
+        guessInput.value = "";
+        attempts.textContent = attempt;
+      };
+    </script>
+  </body>
+</html>

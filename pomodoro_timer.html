@@ -1,0 +1,144 @@
+<!-- //practice working with setInterval() and DOM updates -->
+<!-- clearInterval(variable) -->
+
+<!-- // issue: when time reaches to 1 remaining second it trigger alert immediately, demand is it must reach to 0 second on display then trigger the alert -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        text-align: center;
+        /* top: 250px;
+        position: relative; */
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f2f5;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        color: #1c1e21;
+      }
+
+      #timer {
+        font-size: 6rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        background-color: #fff;
+        padding: 2rem 4rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        color: #1c1e21;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+        margin: 0 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        background-color: #1877f2;
+        color: white;
+        font-weight: 600;
+      }
+
+      button:hover {
+        background-color: #166fe5;
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        background-color: #145cb3;
+        transform: translateY(0);
+      }
+
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.4);
+      }
+    </style>
+    <title>Pomodoro_timer</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Pomodoro Timer</h1>
+      <div id="timer"><h2>1:00</h2></div>
+      <div class="button-container">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let timeLeft = 1 * 60;
+      let timerID;
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        document.getElementById("timer").innerHTML = `<h2>${minutes}:${
+          seconds < 10 ? "0" : ""
+        }${seconds}</h2>`;
+      }
+
+      function startTimer() {
+        if (timerID) return;
+        timerID = setInterval(() => {
+          timeLeft--;
+          updateTimerDisplay();
+
+          if (timeLeft === 0) {
+            clearInterval(timerID);
+            alert("Time is up! Take a 5 minute break");
+          }
+        }, 1000);
+      }
+
+      function resetTimer() {
+        clearInterval(timerID);
+        timerID = null;
+        timeLeft = 1 * 60;
+        updateTimerDisplay();
+      }
+
+      updateTimerDisplay();
+      //  function updateTimerDisplay() {
+      //   const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      //   const seconds = (timeLeft % 60).toString().padStart(2, '0');
+      //   document.getElementById("timer").innerText = `${minutes}:${seconds}`;
+      // }
+
+      /*
+        Report:
+        which my code improved by AI
+        prevent multiple timers running at once
+        consistent start/reset time
+        display time immediately when page loads
+        clearner logic with proper interval handling
+
+        //can add:
+        short and long break cycles
+
+      */
+    </script>
+  </body>
+</html>

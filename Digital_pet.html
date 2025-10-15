@@ -1,0 +1,80 @@
+<!-- //use variable to track pet state //update screen when button is clicked //logic
+to change pet behaviour based on happiness and hunger -->
+<!-- issue take care of where to use event calling like in the below we have statusUpdate() -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        text-align: center;
+      }
+    </style>
+    <title>Digital Pet</title>
+  </head>
+  <body>
+    <div id="container">
+      <h2 id="status">Cat is happy</h2>
+      <button id="feed">Feed</button>
+      <button id="play">Play</button>
+      <button id="sleep">Sleep</button>
+    </div>
+
+    <script>
+      //start with happy and well-fed cat
+      let hunger = 0; // Hunger level starts at 0 (not hungry)
+      let happiness = 10; // Happiness level starts at 10 (very happy)
+
+      function updateStatus() {
+        const status = document.getElementById("status");
+
+        if (hunger > happiness) {
+          status.innerText = "Cat is hungry and unhappy";
+        } else {
+          status.innerText = "Cat is happy";
+        }
+      }
+
+      document.getElementById("feed").onclick = () => {
+        hunger = Math.max(0, hunger - 2);
+        console.log(
+          "Feed the cat! hunger: " + hunger + " & Happiness: " + happiness
+        );
+        updateStatus();
+      };
+
+      document.getElementById("play").onclick = () => {
+        happiness = Math.min(10, happiness + 2);
+        console.log(
+          "Played with the cat! hunger: " +
+            hunger +
+            " & Happiness: " +
+            happiness
+        );
+      };
+
+      document.getElementById("sleep").onclick = () => {
+        hunger = 0;
+        happiness = 10;
+        console.log("Cat slept well! Hunger:", hunger, "Happiness:", happiness);
+        updateStatus();
+      };
+
+      //Show the initial mood when the page loads
+      updateStatus();
+
+      // Use setInterval to simulate time passing
+      // Every 5 seconds, increase hunger and update the pet’s mood
+      setInterval(() => {
+        hunger++;
+
+        // Lower happiness as a result of increased hunger, but not below 0
+        happiness = Math.max(0, happiness - 1);
+
+        console.log("Time passed. Hunger:", hunger, "Happiness:", happiness);
+        updateStatus();
+      }, 5000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      li:hover {
+        cursor: pointer;
+      }
+    </style>
+    <title>Todo_App</title>
+  </head>
+  <body>
+    <input id="taskInput" placeholder="Add a Task" />
+    <button id="addTask">Add</button>
+    <ul id="taskList"></ul>
+
+    <button id="clearAll">Clear ALl</button>
+
+    <script>
+      document.getElementById("addTask").addEventListener("click", function () {
+        let taskText = document.getElementById("taskInput").value;
+
+        if (taskText.trim() === "") return;
+
+        let li = document.createElement("li");
+        li.innerText = taskText;
+
+        li.onclick = () => li.remove();
+        li.onmouseenter = () => (li.style.textDecoration = "line-through");
+        li.onmouseleave = () => (li.style.textDecoration = "none");
+
+        document.getElementById("taskList").appendChild(li);
+        document.getElementById("taskInput").value = "";
+
+        document.getElementById("clearAll").onclick = () => {
+          document.getElementById("taskList").innerHTML = "";
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        text-align: center;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f2f5;
+        color: #333;
+      }
+
+      /* A container for the buttons to manage their layout */
+      body > div:first-of-type {
+        margin-bottom: 2rem;
+      }
+
+      button {
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        margin: 0 0.5rem; /* Adds space between the buttons */
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #fff;
+        color: #1877f2;
+        border: 1px solid #ddd;
+        transition: all 0.2s ease-in-out;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: #1877f2;
+      }
+
+      button:active {
+        transform: translateY(0);
+        background-color: #f0f2f5;
+        box-shadow: none;
+      }
+
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.4);
+      }
+
+      #result:not(:empty) {
+        font-size: 1.5rem;
+        font-weight: 200;
+        color: #1c1e21;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        min-height: 2.5rem; /* Prevents the layout from shifting when text appears */
+        text-align: center;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+    <title>Rock_paper_scissors</title>
+  </head>
+  <body>
+    <div id="container">
+      <button onclick="play('rock')">Rock</button>
+      <button onclick="play('paper')">Paper</button>
+      <button onclick="play('scissors')">Scissors</button>
+      <p id="result"></p>
+      <p id="score"></p>
+    </div>
+
+    <script>
+      let playerScore = 0;
+      let computerScore = 0;
+
+      const moves = ["rock", "paper", "scissors"];
+
+      let result = "";
+
+      //   function play(move) {
+      //   if (move === randomMove) {
+      //     result = "Tie!";
+      //   } else if (move === "rock" && randomMove === "paper") {
+      //     result = "You win!";
+      //   } else if (move === "paper" && randomMove === "rock") {
+      //     result = "You Lose!";
+      //   } else if (move === "scissors" && randomMove === "paper") {
+      //     result = "You win!";
+      //   } else if (move === "paper" && randomMove === "scissors") {
+      //     result = "You Lose!";
+      //   } else if (move === "rock" && randomMove === "scissors") {
+      //     result = "You win!";
+      //   } else if (move === "scissors" && randomMove === "rock") {
+      //     result = "You Lose!";
+      //   } else {
+      //     result = "Invalid Move!";
+      //   }
+      // }
+
+      function play(playerMove) {
+        let computeMove = Math.floor(Math.random() * 3);
+        let randomMove = moves[computeMove];
+
+        if (playerMove === randomMove) result = "Tie";
+        else if (
+          (playerMove === "rock" && randomMove === "scissors") ||
+          (playerMove === "paper" && randomMove === "rock") ||
+          (playerMove === "scissors" && randomMove === "paper")
+        ) {
+          result = "You win";
+          playerScore++;
+        } else {
+          result = "Computer Win";
+          computerScore++;
+        }
+
+        document.getElementById("result").innerText = `
+        You chose ${playerMove} | Computer chose ${randomMove} -> ${result} 
+        `;
+
+        document.getElementById("score").innerText = `
+        Score - You: ${playerScore} | Computer: ${computerScore}
+        `;
+      }
+
+      //   play(randomMove);
+
+      //shorthand for the above nested if else blocks
+      //else if (
+      //   (playerMove === 'rock' && computerMove === 'scissors') ||
+      //   (playerMove === 'paper' && computerMove === 'rock') ||
+      //   (playerMove === 'scissors' && computerMove === 'paper')
+      // ) {
+      //   result = "You win!";
+      //}
+
+      //       You are ready to:
+      //       Build your own projects.
+
+      // Explore JavaScript libraries like React or GSAP.
+
+      // Learn APIs, async, and backend integrations.
+    </script>
+  </body>
+</html>

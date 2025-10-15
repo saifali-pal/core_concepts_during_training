@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function forChangeOfColor() {
+        document.getElementById("demo").innerHTML = "Push Hard Limits";
+      }
+    </script>
+
+    <script src="practiceScipt.js" defer></script>
+    <title>Hello_js</title>
+  </head>
+  <body>
+    <h1>Check the console</h1>
+
+    <p id="demo" style="color: blueviolet">Saifiii</p>
+
+    <p id="changeColor" style="color: brown">Hexa_decimal</p>
+    <button type="button" onClick="forChangeOfColor()">
+      <h1 onclick="alert('Be Saifi')">Click here</h1>
+    </button>
+
+    <div></div>
+    <button type="button" onclick="changeColor()">
+      Click for Color Change
+    </button>
+
+    <button type="button" onclick="outerChange()">Click ME</button>
+    <script>
+      console.log("Hello, Saif");
+    </script>
+
+    <script>
+      function changeColor() {
+        document.getElementById("changeColor").style.color = "orange";
+      }
+    </script>
+  </body>
+</html>

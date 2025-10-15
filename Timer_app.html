@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        text-align: center;
+        margin: 250px;
+      }
+    </style>
+    <title>Timer_app</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Countdown: <span id="time"></span></h1>
+      <button id="start">Start</button>
+      <p id="done"></p>
+    </div>
+
+    <script>
+      let timeLeft = 10;
+      let timer;
+
+      document.getElementById("start").onclick = () => {
+        document.getElementById("done").innerText = "";
+        document.getElementById("start").disabled = true;
+
+        timeLeft = 10;
+
+        document.getElementById("time").innerText = timeLeft;
+
+        timer = setInterval(() => {
+          timeLeft--;
+
+          document.getElementById("time").innerText = timeLeft;
+
+          if (timeLeft <= 0) {
+            clearInterval(timer);
+
+            document.getElementById("done").innerText = "Time's up!";
+
+            return;
+          }
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>
