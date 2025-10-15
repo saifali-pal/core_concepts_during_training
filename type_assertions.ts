@@ -5,3 +5,4 @@ let strlength: number = (<string>someValue).length
 
 let someOtherValue: any = "this is a string"
 let otherStrLength:number = (<string>someOtherValue).length
+  

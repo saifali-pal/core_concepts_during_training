@@ -2,7 +2,7 @@ const orignalObject = {
     name: "Saif",
     address: { city: "Lahore", country: { name: "Pakistan" } }
 }
-
+//
 
 let shallowObj = Object.assign({}, orignalObject)
 let deepObj = JSON.parse(JSON.stringify(orignalObject))

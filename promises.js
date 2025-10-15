@@ -4,6 +4,7 @@
 // function add() {
 //     return console.log(89 + 12)
 // }
+//
 
 let a = 23, b = 90
 let result = a + b

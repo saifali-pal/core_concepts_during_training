@@ -14,3 +14,5 @@ const multiplyByThree = createMultiplier(3)
 
 console.log(multiplyByTwo(10))
 console.log(multiplyByThree(40))
+
+//

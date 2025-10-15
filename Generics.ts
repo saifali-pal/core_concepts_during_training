@@ -15,3 +15,4 @@ interface GenericIdentityFn<T>{
 
 let myIdentity: GenericIdentityFn<number> = identity
 
+//

@@ -18,12 +18,14 @@ function square(num) {
     return num * num
 }
 
-function subTract(num){
+function subTract(num) {
     return num - 5
 }
 
 const numbers = [43, 54, 77, 44, 78]
 
-console.log("Square: ",operateOnNumbers(numbers, square))
+console.log("Square: ", operateOnNumbers(numbers, square))
 console.log(operateOnNumbers(numbers, double))
 console.log(operateOnNumbers(numbers, subTract))
+
+//

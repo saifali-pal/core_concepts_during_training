@@ -171,3 +171,5 @@ console.log(products)
 // Use filter to select a subset of data from an array, and
 
 // Use reduce when you want to return a single value as a result.
+
+//

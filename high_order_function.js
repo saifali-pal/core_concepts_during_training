@@ -20,3 +20,5 @@ function showResult(result) {
 let resultValue = add(10, 20, () => { })
 resultValue()
 console.log(resultValue()) //this will print the result with undefined
+
+//
